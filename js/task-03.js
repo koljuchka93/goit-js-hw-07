@@ -12,3 +12,13 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+const galleryUlRef = document.querySelector('#gallery')
+
+const liRef = images.map(img => {
+  return `<li class='item'>
+    <img src="${img.url}" alt="${img.alt}" width="640">
+  </li>`
+})
+
+
+galleryUlRef.insertAdjacentHTML('afterbegin', liRef)
