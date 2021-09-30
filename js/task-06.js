@@ -1,15 +1,17 @@
-const refs = {
-input: document.querySelector('#name-input'),
-span: document.querySelector('#name-output'),
-}
+const input = document.querySelector('#validation-input');
+const dataLength = input.getAttribute('data-length')
 
-refs.input.addEventListener('input', onInputChange)
+input.addEventListener('blur', onInputBlur)
 
-function onInputChange(event) {
-    if (event.currentTarget.value === '') {
-    refs.span.textContent = 'незнакомец';
-}
-    else {
-    refs.span.textContent = event.currentTarget.value;    
-   }   
+function onInputBlur(event) {
+    if (dataLength == input.value.length) {
+        replaceClass('valid', 'invalid')
+    }
+        else {
+        replaceClass('invalid', 'valid')
+        }
+    }
+function replaceClass(addClass, removeClass) {
+    input.classList.add(addClass)
+    input.classList.remove(removeClass)
 }
